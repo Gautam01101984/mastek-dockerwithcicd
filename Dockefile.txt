@@ -1,2 +1,19 @@
-#Test app for Mastek 
-This is quick and dirty test node.js app for the purpose of demonstrate a basic of CI/CD workflow with Docker Hub
+FROM centos:centos6
+
+MAINTAINER gautam.tembhurne@mastek.com
+
+RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8
+
+# Install node
+RUN yum install -y npm
+
+# Copy app  to /src
+COPY . /src
+
+#Install app and dependencies into /src
+RUN cd /src; npm install
+
+EXPOSE 8080
+
+CMD cd /src && node ./app.js
+
