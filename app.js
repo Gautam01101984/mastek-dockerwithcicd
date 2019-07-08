@@ -7,5 +7,6 @@ app.set('view engine','jade');
 app.get('/',function(req,res){
 	res.render('home',{});
 });
+console.log("hello");
 app.listen(8080);
 module.exports.getApp = app;
